@@ -11,7 +11,7 @@ Public Class AppLauncher
         Dim line As String = ""
         Try
             ' Open the file using a stream reader.
-            Using sr As New StreamReader("Location.txt")
+            Using sr As New StreamReader(Application.StartupPath & "\Location.txt")
                 ' Read the stream to a string and write the string to the console.
                 line = sr.ReadToEnd()
             End Using
@@ -32,6 +32,7 @@ Public Class AppLauncher
     Sub load_form()
         '"C:\Program Files\Volcom Indonesia\Volcom ERP\Volcom MRP.exe"
         Dim myFileVersionInfo As FileVersionInfo = FileVersionInfo.GetVersionInfo(Application.StartupPath() + "\LauncherVolcomERP.exe")
+
         Try
             myFileVersionInfo = FileVersionInfo.GetVersionInfo(url_volcom)
         Catch ex As Exception
