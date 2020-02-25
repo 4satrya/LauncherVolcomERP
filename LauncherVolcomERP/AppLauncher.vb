@@ -16,7 +16,7 @@ Public Class AppLauncher
     End Sub
     Sub load_form()
         DevExpress.UserSkins.BonusSkins.Register()
-        LookAndFeel.SkinName = "Metropolis"
+        LookAndFeel.SkinName = "Metropolis Dark"
 
         Try
             Dim reader As StreamReader = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath() + "\config.txt")
@@ -46,23 +46,24 @@ Public Class AppLauncher
         End Try
 
         Dim myFileVersionInfo As FileVersionInfo = Nothing
-
+        Dim version_check As String = "0.0.0.0"
         Try
             myFileVersionInfo = FileVersionInfo.GetVersionInfo(exe_location)
+            version_check = myFileVersionInfo.ProductVersion.ToString
         Catch ex As Exception
         End Try
 
         PictureEdit1.LoadAsync(upd_location & pic_name)
 
-        LVersion.Text = "Volcom Stock Take (Version : " & myFileVersionInfo.ProductVersion.ToString & ")"
+        LVersion.Text = "Volcom Stock Take (Version : " & version_check & ")"
 
         Dim web As New Net.WebClient
         Dim LatestVersion As String = web.DownloadString(upd_location & ver_name) 'To download the Lastest Version from a specified URL.
 
-        If myFileVersionInfo.ProductVersion.ToString < LatestVersion Then
+        If version_check < LatestVersion Then
             BLaunch.Text = "Update"
         Else
-            BLaunch.Text = "Start"
+            BLaunch.Text="Start"
         End If
     End Sub
     Sub DownloadQueue()
