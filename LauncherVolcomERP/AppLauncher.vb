@@ -4,71 +4,70 @@ Imports System.IO
 
 Public Class AppLauncher
     Dim _list_download As Queue(Of String) = New Queue(Of String)()
-    Dim exe_location As String = ""
-    Dim upd_location As String = ""
-    Dim pic_name As String = ""
-    Dim exe_name As String = ""
-    Dim msi_name As String = ""
-    Dim ver_name As String = ""
+    Dim url_volcom As String = ""
+    Dim url_volcom_un As String = ""
 
     Private Sub AppLauncher_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Dim line As String = ""
+        Try
+            ' Open the file using a stream reader.
+            Using sr As New StreamReader(Application.StartupPath & "\Location.txt")
+                ' Read the stream to a string and write the string to the console.
+                line = sr.ReadToEnd()
+            End Using
+        Catch ex As Exception
+        End Try
+
+        If Environment.Is64BitOperatingSystem.ToString Then
+            url_volcom = line + ":\Program Files (x86)\Volcom Indonesia\Volcom ERP\Volcom MRP.exe"
+            url_volcom_un = line + ":\Program Files (x86)\Volcom Indonesia\Volcom ERP\uninstall_command.bat"
+        Else
+            url_volcom = line + ":\Program Files\Volcom Indonesia\Volcom ERP\Volcom MRP.exe"
+            url_volcom_un = line + ":\Program Files\Volcom Indonesia\Volcom ERP\uninstall_command.bat"
+        End If
+        DevExpress.UserSkins.BonusSkins.Register()
+        LookAndFeel.SkinName = "Metropolis"
         load_form()
     End Sub
     Sub load_form()
-        DevExpress.UserSkins.BonusSkins.Register()
-        LookAndFeel.SkinName = "Metropolis Dark"
+        '"C:\Program Files\Volcom Indonesia\Volcom ERP\Volcom MRP.exe"
+        Dim myFileVersionInfo As FileVersionInfo = FileVersionInfo.GetVersionInfo(Application.StartupPath() + "\LauncherVolcomERP.exe")
 
         Try
-            Dim reader As StreamReader = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath() + "\config.txt")
-            Dim line As String
-
-            Do
-                line = reader.ReadLine
-                '
-                If line.Contains("exe_location") Then
-                    exe_location = line.Substring(13)
-                ElseIf line.Contains("upd_location") Then
-                    upd_location = line.Substring(13)
-                ElseIf line.Contains("exe_name") Then
-                    exe_name = line.Substring(9)
-                ElseIf line.Contains("msi_name") Then
-                    msi_name = line.Substring(9)
-                ElseIf line.Contains("pic_name") Then
-                    pic_name = line.Substring(9)
-                ElseIf line.Contains("ver_name") Then
-                    ver_name = line.Substring(9)
-                End If
-                '
-            Loop Until line Is Nothing
-
-            reader.Close()
+            myFileVersionInfo = FileVersionInfo.GetVersionInfo(url_volcom)
         Catch ex As Exception
         End Try
 
-        Dim myFileVersionInfo As FileVersionInfo = Nothing
-        Dim version_check As String = "0.0.0.0"
-        Try
-            myFileVersionInfo = FileVersionInfo.GetVersionInfo(exe_location)
-            version_check = myFileVersionInfo.ProductVersion.ToString
-        Catch ex As Exception
-        End Try
 
-        PictureEdit1.LoadAsync(upd_location & pic_name)
+        PictureEdit1.LoadAsync("http://192.168.1.2/app_upd/launch_img.jpg")
 
-        LVersion.Text = "Volcom Stock Take (Version : " & version_check & ")"
-
+        LVersion.Text = "Volcom ERP (Version : " & myFileVersionInfo.FileVersion.ToString & ")"
+        Dim update_url As String = "http://192.168.1.2/app_upd/"
         Dim web As New Net.WebClient
-        Dim LatestVersion As String = web.DownloadString(upd_location & ver_name) 'To download the Lastest Version from a specified URL.
+        Dim LatestVersion As String = web.DownloadString(update_url & "version.txt") 'To download the Lastest Version from a specified URL.
 
-        If version_check < LatestVersion Then
+        'Dim LatestVersion_v = New Version(LatestVersion)
+        'Dim myFileVersionInfo_v = New Version(myFileVersionInfo.FileVersion.ToString)
+
+        'Dim result = LatestVersion_v.CompareTo(myFileVersionInfo_v)
+        'If result > 0 Then
+        'Console.WriteLine("LatestVersion_v is greater")
+        'ElseIf result < 0 Then
+        'Console.WriteLine("myFileVersionInfo_v is greater")
+        'Else
+        'Console.WriteLine("versions are equal")
+        'End If
+
+        If myFileVersionInfo.FileVersion.ToString < LatestVersion Then
+            'infoCustom("Latest Version : " & LatestVersion & " of this application is available !")
             BLaunch.Text = "Update"
         Else
-            BLaunch.Text="Start"
+            BLaunch.Text = "Start"
         End If
     End Sub
     Sub DownloadQueue()
-        _list_download.Enqueue(upd_location & msi_name)
-        _list_download.Enqueue(upd_location & exe_name)
+        _list_download.Enqueue("http://192.168.1.2/app_upd/SetupVolcomERP.msi")
+        _list_download.Enqueue("http://192.168.1.2/app_upd/setup.exe")
 
         download_start()
     End Sub
@@ -83,11 +82,19 @@ Public Class AppLauncher
             _web_client.DownloadFileAsync(New Uri(url), My.Application.Info.DirectoryPath.ToString + "/" + filename)
             Return
         End If
-
         infoCustom("Download complete, installing new version..")
 
+        If System.IO.File.Exists(url_volcom_un) Then
+            Dim myProcessUn As New Process()
+            myProcessUn.StartInfo.FileName = url_volcom_un
+            myProcessUn.StartInfo.CreateNoWindow = True
+            myProcessUn.Start()
+            myProcessUn.WaitForExit()
+        End If
+
+
         Dim myProcess As New Process()
-        myProcess.StartInfo.FileName = My.Application.Info.DirectoryPath.ToString & "/" & msi_name
+        myProcess.StartInfo.FileName = My.Application.Info.DirectoryPath.ToString & "/SetupVolcomERP.msi"
         myProcess.StartInfo.CreateNoWindow = True
         myProcess.Start()
         myProcess.WaitForExit()
@@ -119,7 +126,7 @@ Public Class AppLauncher
             DownloadQueue()
         ElseIf BLaunch.Text = "Start" Then
             Dim myProcess As New Process()
-            myProcess.StartInfo.FileName = exe_location
+            myProcess.StartInfo.FileName = url_volcom
             myProcess.StartInfo.CreateNoWindow = True
             myProcess.Start()
             Close()

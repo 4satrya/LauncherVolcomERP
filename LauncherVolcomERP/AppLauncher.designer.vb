@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class AppLauncher
     Inherits DevExpress.XtraEditors.XtraForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class AppLauncher
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AppLauncher))
         Me.ProgressBarControl1 = New DevExpress.XtraEditors.ProgressBarControl()
@@ -38,15 +38,13 @@ Partial Class AppLauncher
         '
         'ProgressBarControl1
         '
-        Me.ProgressBarControl1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.ProgressBarControl1.Location = New System.Drawing.Point(0, 0)
+        Me.ProgressBarControl1.Location = New System.Drawing.Point(10, 11)
         Me.ProgressBarControl1.Name = "ProgressBarControl1"
-        Me.ProgressBarControl1.Size = New System.Drawing.Size(481, 12)
+        Me.ProgressBarControl1.Size = New System.Drawing.Size(464, 34)
         Me.ProgressBarControl1.TabIndex = 0
         '
         'LVersion
         '
-        Me.LVersion.Appearance.ForeColor = System.Drawing.Color.White
         Me.LVersion.Dock = System.Windows.Forms.DockStyle.Left
         Me.LVersion.Location = New System.Drawing.Point(0, 0)
         Me.LVersion.Name = "LVersion"
@@ -56,19 +54,17 @@ Partial Class AppLauncher
         '
         'BLaunch
         '
-        Me.BLaunch.Appearance.BackColor = System.Drawing.Color.Crimson
-        Me.BLaunch.Appearance.BackColor2 = System.Drawing.Color.Black
+        Me.BLaunch.Appearance.BackColor = System.Drawing.SystemColors.MenuHighlight
         Me.BLaunch.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.BLaunch.Appearance.Options.UseBackColor = True
         Me.BLaunch.Appearance.Options.UseForeColor = True
-        Me.BLaunch.Dock = System.Windows.Forms.DockStyle.Top
-        Me.BLaunch.Location = New System.Drawing.Point(0, 12)
+        Me.BLaunch.Location = New System.Drawing.Point(480, 11)
         Me.BLaunch.LookAndFeel.SkinMaskColor = System.Drawing.Color.Gainsboro
-        Me.BLaunch.LookAndFeel.SkinName = "Black"
+        Me.BLaunch.LookAndFeel.SkinName = "Metropolis"
         Me.BLaunch.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat
         Me.BLaunch.LookAndFeel.UseDefaultLookAndFeel = False
         Me.BLaunch.Name = "BLaunch"
-        Me.BLaunch.Size = New System.Drawing.Size(481, 34)
+        Me.BLaunch.Size = New System.Drawing.Size(149, 34)
         Me.BLaunch.TabIndex = 3
         Me.BLaunch.Text = "Launch"
         '
@@ -78,9 +74,9 @@ Partial Class AppLauncher
         Me.PanelControl2.Appearance.Options.UseBackColor = True
         Me.PanelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.PanelControl2.Controls.Add(Me.LVersion)
-        Me.PanelControl2.Location = New System.Drawing.Point(10, 57)
+        Me.PanelControl2.Location = New System.Drawing.Point(10, 51)
         Me.PanelControl2.Name = "PanelControl2"
-        Me.PanelControl2.Size = New System.Drawing.Size(460, 19)
+        Me.PanelControl2.Size = New System.Drawing.Size(619, 19)
         Me.PanelControl2.TabIndex = 5
         '
         'LayoutControlItem2
@@ -96,15 +92,15 @@ Partial Class AppLauncher
         Me.PanelControl3.Appearance.BackColor = System.Drawing.Color.Transparent
         Me.PanelControl3.Appearance.Options.UseBackColor = True
         Me.PanelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
-        Me.PanelControl3.Controls.Add(Me.BLaunch)
         Me.PanelControl3.Controls.Add(Me.ProgressBarControl1)
         Me.PanelControl3.Controls.Add(Me.PanelControl2)
+        Me.PanelControl3.Controls.Add(Me.BLaunch)
         Me.PanelControl3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelControl3.Location = New System.Drawing.Point(0, 296)
         Me.PanelControl3.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat
         Me.PanelControl3.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl3.Name = "PanelControl3"
-        Me.PanelControl3.Size = New System.Drawing.Size(481, 81)
+        Me.PanelControl3.Size = New System.Drawing.Size(643, 81)
         Me.PanelControl3.TabIndex = 6
         '
         'PictureEdit1
@@ -114,16 +110,16 @@ Partial Class AppLauncher
         Me.PictureEdit1.Name = "PictureEdit1"
         Me.PictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
         Me.PictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
-        Me.PictureEdit1.Size = New System.Drawing.Size(481, 296)
+        Me.PictureEdit1.Size = New System.Drawing.Size(643, 296)
         Me.PictureEdit1.TabIndex = 7
         '
         'AppLauncher
         '
-        Me.Appearance.BackColor = System.Drawing.SystemColors.InactiveCaptionText
+        Me.Appearance.BackColor = System.Drawing.Color.White
         Me.Appearance.Options.UseBackColor = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(481, 377)
+        Me.ClientSize = New System.Drawing.Size(643, 377)
         Me.Controls.Add(Me.PictureEdit1)
         Me.Controls.Add(Me.PanelControl3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
