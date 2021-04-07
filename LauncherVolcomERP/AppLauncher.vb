@@ -57,14 +57,17 @@ Public Class AppLauncher
 
         LVersion.Text = "Volcom Stock Take (Version : " & version_check & ")"
 
-        Dim web As New Net.WebClient
-        Dim LatestVersion As String = web.DownloadString(upd_location & ver_name) 'To download the Lastest Version from a specified URL.
+        Try
+            Dim web As New Net.WebClient
+            Dim LatestVersion As String = web.DownloadString(upd_location & ver_name) 'To download the Lastest Version from a specified URL.
 
-        If version_check < LatestVersion Then
-            BLaunch.Text = "Update"
-        Else
-            BLaunch.Text="Start"
-        End If
+            If version_check < LatestVersion Then
+                BLaunch.Text = "Update"
+            Else
+                BLaunch.Text = "Start"
+            End If
+        Catch ex As Exception
+        End Try
     End Sub
     Sub DownloadQueue()
         _list_download.Enqueue(upd_location & msi_name)
@@ -120,6 +123,7 @@ Public Class AppLauncher
         ElseIf BLaunch.Text = "Start" Then
             Dim myProcess As New Process()
             myProcess.StartInfo.FileName = exe_location
+            myProcess.StartInfo.Arguments = "afc0265d404f7b661296ffd9d69188f8"
             myProcess.StartInfo.CreateNoWindow = True
             myProcess.Start()
             Close()
