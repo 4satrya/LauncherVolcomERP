@@ -27,6 +27,7 @@ Partial Class AppLauncher
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
         Me.PictureEdit1 = New DevExpress.XtraEditors.PictureEdit()
+        Me.BStart = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.ProgressBarControl1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
@@ -78,7 +79,7 @@ Partial Class AppLauncher
         Me.PanelControl2.Appearance.Options.UseBackColor = True
         Me.PanelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
         Me.PanelControl2.Controls.Add(Me.LVersion)
-        Me.PanelControl2.Location = New System.Drawing.Point(10, 57)
+        Me.PanelControl2.Location = New System.Drawing.Point(9, 86)
         Me.PanelControl2.Name = "PanelControl2"
         Me.PanelControl2.Size = New System.Drawing.Size(460, 19)
         Me.PanelControl2.TabIndex = 5
@@ -96,15 +97,16 @@ Partial Class AppLauncher
         Me.PanelControl3.Appearance.BackColor = System.Drawing.Color.Transparent
         Me.PanelControl3.Appearance.Options.UseBackColor = True
         Me.PanelControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.PanelControl3.Controls.Add(Me.BStart)
         Me.PanelControl3.Controls.Add(Me.BLaunch)
         Me.PanelControl3.Controls.Add(Me.ProgressBarControl1)
         Me.PanelControl3.Controls.Add(Me.PanelControl2)
         Me.PanelControl3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelControl3.Location = New System.Drawing.Point(0, 296)
+        Me.PanelControl3.Location = New System.Drawing.Point(0, 265)
         Me.PanelControl3.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat
         Me.PanelControl3.LookAndFeel.UseDefaultLookAndFeel = False
         Me.PanelControl3.Name = "PanelControl3"
-        Me.PanelControl3.Size = New System.Drawing.Size(481, 81)
+        Me.PanelControl3.Size = New System.Drawing.Size(481, 112)
         Me.PanelControl3.TabIndex = 6
         '
         'PictureEdit1
@@ -114,8 +116,24 @@ Partial Class AppLauncher
         Me.PictureEdit1.Name = "PictureEdit1"
         Me.PictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
         Me.PictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
-        Me.PictureEdit1.Size = New System.Drawing.Size(481, 296)
+        Me.PictureEdit1.Size = New System.Drawing.Size(481, 265)
         Me.PictureEdit1.TabIndex = 7
+        '
+        'BStart
+        '
+        Me.BStart.Appearance.BackColor = System.Drawing.Color.Blue
+        Me.BStart.Appearance.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.BStart.Appearance.Options.UseBackColor = True
+        Me.BStart.Appearance.Options.UseForeColor = True
+        Me.BStart.Dock = System.Windows.Forms.DockStyle.Top
+        Me.BStart.Location = New System.Drawing.Point(0, 46)
+        Me.BStart.LookAndFeel.SkinName = "Black"
+        Me.BStart.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat
+        Me.BStart.LookAndFeel.UseDefaultLookAndFeel = False
+        Me.BStart.Name = "BStart"
+        Me.BStart.Size = New System.Drawing.Size(481, 34)
+        Me.BStart.TabIndex = 6
+        Me.BStart.Text = "Start"
         '
         'AppLauncher
         '
@@ -151,4 +169,5 @@ Partial Class AppLauncher
     Friend WithEvents PanelControl2 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents PanelControl3 As DevExpress.XtraEditors.PanelControl
     Friend WithEvents PictureEdit1 As DevExpress.XtraEditors.PictureEdit
+    Friend WithEvents BStart As DevExpress.XtraEditors.SimpleButton
 End Class

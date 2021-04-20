@@ -57,14 +57,19 @@ Public Class AppLauncher
 
         LVersion.Text = "Volcom Stock Take (Version : " & version_check & ")"
 
-        Dim web As New Net.WebClient
-        Dim LatestVersion As String = web.DownloadString(upd_location & ver_name) 'To download the Lastest Version from a specified URL.
+        Try
+            Dim web As New Net.WebClient
+            Dim LatestVersion As String = web.DownloadString(upd_location & ver_name) 'To download the Lastest Version from a specified URL.
 
-        If version_check < LatestVersion Then
-            BLaunch.Text = "Update"
-        Else
-            BLaunch.Text="Start"
-        End If
+            If version_check < LatestVersion Then
+                BLaunch.Visible = True
+                BLaunch.Text = "Update"
+            Else
+                BLaunch.Visible = False
+                BLaunch.Text = ""
+            End If
+        Catch ex As Exception
+        End Try
     End Sub
     Sub DownloadQueue()
         _list_download.Enqueue(upd_location & msi_name)
@@ -128,5 +133,13 @@ Public Class AppLauncher
 
     Private Sub AppLauncher_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         Dispose()
+    End Sub
+
+    Private Sub BStart_Click(sender As Object, e As EventArgs) Handles BStart.Click
+        Dim myProcess As New Process()
+        myProcess.StartInfo.FileName = exe_location
+        myProcess.StartInfo.CreateNoWindow = True
+        myProcess.Start()
+        Close()
     End Sub
 End Class
