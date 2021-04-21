@@ -26,8 +26,8 @@ Partial Class AppLauncher
         Me.PanelControl2 = New DevExpress.XtraEditors.PanelControl()
         Me.LayoutControlItem2 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.PanelControl3 = New DevExpress.XtraEditors.PanelControl()
-        Me.PictureEdit1 = New DevExpress.XtraEditors.PictureEdit()
         Me.BStart = New DevExpress.XtraEditors.SimpleButton()
+        Me.PictureEdit1 = New DevExpress.XtraEditors.PictureEdit()
         CType(Me.ProgressBarControl1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PanelControl2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelControl2.SuspendLayout()
@@ -71,7 +71,7 @@ Partial Class AppLauncher
         Me.BLaunch.Name = "BLaunch"
         Me.BLaunch.Size = New System.Drawing.Size(481, 34)
         Me.BLaunch.TabIndex = 3
-        Me.BLaunch.Text = "Launch"
+        Me.BLaunch.Text = "Update"
         '
         'PanelControl2
         '
@@ -109,16 +109,6 @@ Partial Class AppLauncher
         Me.PanelControl3.Size = New System.Drawing.Size(481, 112)
         Me.PanelControl3.TabIndex = 6
         '
-        'PictureEdit1
-        '
-        Me.PictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureEdit1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureEdit1.Name = "PictureEdit1"
-        Me.PictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
-        Me.PictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
-        Me.PictureEdit1.Size = New System.Drawing.Size(481, 265)
-        Me.PictureEdit1.TabIndex = 7
-        '
         'BStart
         '
         Me.BStart.Appearance.BackColor = System.Drawing.Color.Blue
@@ -134,6 +124,16 @@ Partial Class AppLauncher
         Me.BStart.Size = New System.Drawing.Size(481, 34)
         Me.BStart.TabIndex = 6
         Me.BStart.Text = "Start"
+        '
+        'PictureEdit1
+        '
+        Me.PictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PictureEdit1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureEdit1.Name = "PictureEdit1"
+        Me.PictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
+        Me.PictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch
+        Me.PictureEdit1.Size = New System.Drawing.Size(481, 265)
+        Me.PictureEdit1.TabIndex = 7
         '
         'AppLauncher
         '
