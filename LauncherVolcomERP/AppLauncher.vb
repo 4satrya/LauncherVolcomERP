@@ -125,6 +125,7 @@ Public Class AppLauncher
         ElseIf BLaunch.Text = "Start" Then
             Dim myProcess As New Process()
             myProcess.StartInfo.FileName = exe_location
+            myProcess.StartInfo.Arguments = "afc0265d404f7b661296ffd9d69188f8"
             myProcess.StartInfo.CreateNoWindow = True
             myProcess.Start()
             Close()
@@ -138,6 +139,7 @@ Public Class AppLauncher
     Private Sub BStart_Click(sender As Object, e As EventArgs) Handles BStart.Click
         Dim myProcess As New Process()
         myProcess.StartInfo.FileName = exe_location
+        myProcess.StartInfo.Arguments = "afc0265d404f7b661296ffd9d69188f8"
         myProcess.StartInfo.CreateNoWindow = True
         myProcess.Start()
         Close()
